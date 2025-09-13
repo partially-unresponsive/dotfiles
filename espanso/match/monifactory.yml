@@ -1,0 +1,7 @@
+# For referencing Monifactory flowcharts, ratios and info
+
+matches: 
+  - trigger: ";monipvc"
+    image_path: "$CONFIG/media/moni_pvc.png"
+  - trigger: ";monioxy"
+    image_path: "$CONFIG/media/moni_oxygenhydrogen.png"

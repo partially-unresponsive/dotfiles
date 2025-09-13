@@ -1,0 +1,90 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+
+matches:
+  # Simple text replacement
+  - trigger: ";espanso"
+    replace: "https://espanso.org/docs/matches/basics/"
+  - trigger: ";khappy"
+    replace: "(,,>ヮ<,,)"
+  - trigger: ";kcry"
+    replace: "(╥‸╥)"
+  - trigger: ";kstrong"
+    replace: "ᕙ(•̀ ᗜ •́)ᕗ"
+  - trigger: ";kmad"
+    replace: "(¬_¬\")💢"
+  - trigger: ";kheart"
+    replace: "(ˊ•͈ ◡ •͈ˋ)♡"
+  - trigger: ";khug"
+    replace: "(づ｡◕‿‿◕｡)づ"
+  - trigger: ";kshrug"
+    replace: "`¯\\_(ツ)_/¯`"
+  - trigger: ";euro"
+    replace: "\u20ac"
+  - trigger: ";gbp"
+    replace: "₤"
+  - trigger: ";['"
+    replace: "「"
+  - trigger: ";]'"
+    replace: "」"
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  - trigger: ";today"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%d-%m-%Y"
+  - trigger: ";tomorrow"
+    replace: "{{mydate}}"
+    label: Insert tomorrow's date, such as 13/7/2025
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%d-%m-%Y"
+          offset: 86400
+  - trigger: ";yesterday"
+    replace: "{{mydate}}"
+    label: Insert yesterday's date, such as 11/7/2025
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%d-%m-%Y"
+          offset: -86400
+  # Print the output of a shell command
+  - trigger: ";shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+#    replace: "https://www.google.com/maps/place/35%C2%B000'00.0%22N+60%C2%B000'00.0%22W/"
+  - trigger: ";coords"
+    replace: "{{grok}}"
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: |
+            Coords: [[longitude]], [[latitude]]
+      - name: grok
+        type: shell
+        params:
+          cmd: "echo 'https://www.google.com/maps/place//@{{form1.longitude}}.0443223,{{form1.latitude}},14z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDcyNy4wIKXMDSoASAFQAw%3D%3D'"
+  # And much more! For more information, visit the docs: https://espanso.org/docs/

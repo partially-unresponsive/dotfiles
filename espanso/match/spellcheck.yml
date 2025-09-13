@@ -1,0 +1,7 @@
+# For words commonly spelt wrong. Do better!
+
+matches:
+  - trigger: "expresision"
+    replace: "expression"
+    word: true
+

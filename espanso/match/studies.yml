@@ -1,0 +1,109 @@
+# espanso match file
+
+# Math, physics, etc. snippets and useful links
+
+matches:
+  - trigger: ";mathbooks"
+    replace: "https://youtu.be/didXE0HkSC8"
+  - trigger: ";note"
+    replace: |
+      >[!note]
+      >$|$
+    # The backticks will be closed by themselves with the help of Latex Suite (or maybe some built-in feature) 
+      
+  - trigger: ";h1"
+    replace: |
+
+      ---
+
+      #   $|$
+      > 
+  - trigger: ";h2"
+    replace: |
+      
+      ---
+      
+      ##   $|$
+      > 
+  - trigger: ";hcommands"
+    replace: |
+
+      ---
+
+      ## Commands 
+
+      |Command|Meaning|Usage|
+      |---|
+  - trigger: ";symbols"
+    replace: |
+
+      ---
+
+      ## Symbols
+      
+      |Notation|Meaning|Usage|
+      |---|
+    # From now on, these values will be usef for "Discrete Mathematical Objects" textbook 
+    # Chapter 1
+  - trigger: ";form1"
+    form: |
+      Hey [[name]],
+      [[text]]
+      Happy Birthday!
+    form_fields:
+      text:
+        multiline: true
+  # Way more advanced form with command injection
+  - trigger: ";rev"
+    replace: "{{reversed}}"
+    vars:
+    - name: form1
+      type: form
+      params:
+        layout: |
+          Reverse [[name]]
+    - name: reversed
+      type: shell
+      params:
+       cmd: "echo '{{form1.name}}' | rev"
+
+  - trigger: ";form2"
+    replace: "{{grok}}"
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: |
+            Sets: [[setA]], [[setB]], [[setC]]
+      - name: grok
+        type: shell
+        params:
+          cmd: "echo 'According to Theorem 3:\n$$|{{form1.setA}}\\cup {{form1.setB}}\\cup {{form1.setC}}| = |{{form1.setA}}| + |{{form1.setB}}| + |{{form1.setC}}| - |{{form1.setA}} \\cap {{form1.setB}}| - |{{form1.setB}}\\cap {{form1.setC}}| - |{{form1.setA}}\\cap {{form1.setC}}| + |{{form1.setA}}\\cap {{form1.setB}}\\cap {{form1.setC}}|$$' " 
+  - trigger: ";exer"
+    replace: "{{grok}}"
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: |
+            Exercise [[ex]] at page [[page]]
+      - name: grok
+        type: shell
+        params:
+          cmd: "echo '\n**Ex.** `{{form1.ex}}` page `{{form1.page}}`\n>$|$\n\n---' "
+  # ilith (Super Matroid) inspired Obsidian notes
+  - trigger: ";satz" # Theorem
+    replace: |
+      >[!satz]
+      #theorem
+
+  - trigger: ";beweis" # Proof
+    replace: |
+      >[!beweis]
+      #proof
+
+  # Physical and mathematical constants
+  - trigger: ";mathpi"
+    replace: "3.141592"
+  - trigger: ";matheu"
+    replace: "2.718281"

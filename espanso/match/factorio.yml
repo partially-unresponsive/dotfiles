@@ -1,0 +1,5 @@
+# For referencing Factorio ratios, info and flowcharts
+
+matches:
+  - trigger: ";factoil"
+    replace: "Petroleum: 20:5:17 (advanced:heavy cracking:light cracking)||Coal liquefaction: 60:39:55 (coal liquefaction:heavy cracking:light cracking)"

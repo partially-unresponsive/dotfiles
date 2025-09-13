@@ -1,0 +1,19 @@
+# Mental health and personal awareness
+
+matches:
+  - trigger: ";helpme"
+    replace: "{{grok}}"
+    vars:
+      - name: form1
+        type: form
+        params:
+          layout: |
+            Crisis Report:
+            Severity (how bad do you feel?): [[severity]]
+            Emotions (how I feel): [[emotion1]], [[emotion2]]
+            Cause (what caused this): [[cause]]
+            Action (what should I do): [[action]] 
+      - name: grok
+        type: shell
+        params:
+          cmd: "echo '**Report** : I am currently in a **{{form1.severity}}** state of mind. I mostly feel **{{form1.emotion1}}** and **{{form1.emotion2}}**, most likely because of `{{form1.cause}}`. This is **not** caused by your actions. The best thing I think I could do right now would be __{{form1.action}}__.'"

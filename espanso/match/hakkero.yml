@@ -1,0 +1,26 @@
+# List of (potentially) useful macros relating to development of the Hakkero engine atop the Vulkan API
+
+matches:
+  - trigger: ";vulkerrors"
+    replace: "https://registry.khronos.org/vulkan/specs/latest/man/html/VkResult.html"
+  - trigger: ";hakkero"
+    replace: "game engine built atop the Vulkan API by the perfect being and her sidekick"
+  - trigger: ";vulkprefix"
+    replace: "Prefixes: `vk` (function), `Vk` (struct/enum type) , `VK_` (enum value)"
+  - trigger: ";vulkcreategeneric"
+    replace: |
+      VkXXXCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_XXX_CREATE_INFO;
+      createInfo.pNext = nullptr;
+      createInfo.foo = ...;
+      VkXXX object;
+      if (vkCreateXXX(&createInfo, nullptr, &object) != VK_SUCCESS) {
+        LOG_ERROR("Failed to create object.");
+        return false;
+      }
+  - trigger: ";vulkspec"
+    replace: "https://registry.khronos.org/vulkan/specs/latest/man/html/"
+  - trigger: ";vulkinfo"
+    replace: "vulkaninfo | nvim"
+  - trigger: ";vkcube"
+    replace: "vkcube"

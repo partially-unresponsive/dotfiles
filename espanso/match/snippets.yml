@@ -1,0 +1,32 @@
+# Code snippets and others curated by CutieSai :3
+# Included languages: shell, C++
+# TODO: Include snippets for more languages, when necessary
+
+
+matches:
+  - trigger: ";pacmanu"
+    replace: "pacman -Rcns"
+  - trigger: ";pacmans"
+    replace: "pacman -Q"
+  - trigger: ";du"
+    replace: "du -ah . | sort -rh | head -n 50"
+# C++ / CPP Snippets
+    # NOTE: References and websites
+  - trigger: ";cppexample"
+    replace: "https://cppbyexample.com/index.html"
+  - trigger: ";cppalgorithms"
+    replace: "https://github.com/xtaci/algorithms"
+# Actual snippets
+    # Taken from: https://youtu.be/ZKIH5B5Hn9E
+  - trigger: ";cppfind" # Simple "is element $x$ in this data structure?" query
+    replace: |
+         if (std::find(A.begin(), A.end(), x) != A.end()){ // x is in A }
+  - trigger: ";cppforall"
+    replace: |
+      bool allPositive = std::all_of(A.begin(), A.end(), [](int x) { return x > 0; });
+  - trigger: ";cppexists"
+    replace: |
+      bool hasNegative = std::any_of(A.begin(), A.end(), [](int x) { return x < 0; });
+  - trigger: ";cppmap" # Uses a lambda function to map any set of values in a specific way
+    replace: |
+      auto f = [](int x) { return x * x; };
