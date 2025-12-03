@@ -1,212 +1,86 @@
-/* ############################################################################################################ */
-/* ##   ______  __      __  _______   ________  _______    ______   __    __   ______   __    __  ________   ## */
-/* ##  /      \|  \    /  \|       \ |        \|       \  /      \ |  \  |  \ /      \ |  \  /  \|        \  ## */
-/* ## |  $$$$$$\\$$\  /  $$| $$$$$$$\| $$$$$$$$| $$$$$$$\|  $$$$$$\| $$\ | $$|  $$$$$$\| $$ /  $$| $$$$$$$$  ## */
-/* ## | $$   \$$ \$$\/  $$ | $$__/ $$| $$__    | $$__| $$| $$___\$$| $$$\| $$| $$__| $$| $$/  $$ | $$__      ## */
-/* ## | $$        \$$  $$  | $$    $$| $$  \   | $$    $$ \$$    \ | $$$$\ $$| $$    $$| $$  $$  | $$  \     ## */
-/* ## | $$   __    \$$$$   | $$$$$$$\| $$$$$   | $$$$$$$\ _\$$$$$$\| $$\$$ $$| $$$$$$$$| $$$$$\  | $$$$$     ## */
-/* ## | $$__/  \   | $$    | $$__/ $$| $$_____ | $$  | $$|  \__| $$| $$ \$$$$| $$  | $$| $$ \$$\ | $$_____   ## */
-/* ##  \$$    $$   | $$    | $$    $$| $$     \| $$  | $$ \$$    $$| $$  \$$$| $$  | $$| $$  \$$\| $$     \  ## */
-/* ##   \$$$$$$     \$$     \$$$$$$$  \$$$$$$$$ \$$   \$$  \$$$$$$  \$$   \$$ \$$   \$$ \$$   \$$ \$$$$$$$$  ## */
-/* ##                                                                                                        ## */
-/* ## Created by Cybersnake                                                                                  ## */
-/* ############################################################################################################ */
-
 * {
-    border: none;
-    border-radius: 10px;
-    font-family: "JetBrainsMono Nerd Font";
-    font-weight: bold;
-    font-size: 12px;
-    min-height: 0;
+    font-family: Iosevka Nerd Font, sans-serif;
+    font-size: 15px;
 }
 
 window#waybar {
-    background: rgba(21, 18, 27, 0);
-    color: #cdd6f4;
+    background-color: transparent;
+    color: #ffffff;
+    transition-property: all;
+    transition-duration: .5s;
 }
 
-tooltip {
-    background: #000000;
-    border-radius: 7px;
-    border-width: 2.5px;
-    border-style: solid;
-    border-color: #8aadf4;
-    padding-right: 5px;
-    padding-left: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+
+/* Left modules */
+
+.modules-left{
+  background-color: #000917;
+  padding-left:5px;
+  padding-right:5px;
+  border-radius: 10px;
+  border: 2px solid #000326;
+
+}
+
+/*
+#battery states.low {
+    background-color: #FFFFFF;
+    color: #ababab;
+} */
+
+#workspaces{
+  padding-right:10px;
+}
+
+#cpu{
+  padding-left:10px;
 }
 
 #workspaces button {
-    color: #313244;
-    margin-right: 5px;
-    padding-right: 5px;
-    padding-left: 5px;
-}
-
-#workspaces button.active {
-    color: #f5a97f;
-}
-
-#workspaces button.focused {
-    color: #a6adc8;
-    background: #eba0ac;
-    border-radius: 7px;
-}
-
-#workspaces button.urgent {
-    color: #11111b;
-    background: #a6e3a1;
-    border-radius: 7px;
+    padding: 10px 5px;
+    background-color: #000917;
+    border-radius:0;
+    color: #ffffff;
+    outline:none;
+    border:none;
 }
 
 #workspaces button:hover {
-    background: #11111b;
-    color: #cdd6f4;
-    border-radius: 7px;
+    color:#cba6f7;
 }
 
-#window,
-#clock,
-#battery,
-#pulseaudio,
-#pulseaudio.microphone,
-#network,
-#bluetooth,
-#custom-notifications,
-#custom-updates,
-#custom-player,
-#workspaces,
-#tray,
-#memory,
-#disk,
-#backlight,
-
-#backlight {
-    background: #000000;
-    opacity: 1.0;
-    padding: 1.5px 7px 1.5px 7px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 7px 7px 7px 7px;
-    margin-right: 5px;
-    margin-left: 5px;
+#workspaces button.focused {
+    box-shadow: inset 0 -3px #5c5b5b;
 }
 
-#tray {
-    border-radius: 7px;
-    margin-right: 7px;
-}
-
-#workspaces {
-    background: #000000;
-    border-radius: 7px;
-    margin-left: 5px;
-    padding-right: 0px;
-}
-
-#window {
-    border-radius: 7px;
-    margin-left: 60px;
-    margin-right: 60px;
-}
-
-#clock {
-    color: #a6e3a1;
-    border-radius: 7px 7px 7px 7px;
-    margin-right: 3px;
-    margin-left: 3px;
-}
-
-#network {
-    color: #f9e2af;
-    border-radius: 7px 7px 7px 7px;
-    margin-right: 5px;
-}
-
-#custom-notifications {
-    color: #f9e2af;
-    border-radius: 7px 7px 7px 7px;
-    padding-left: 9px;
-    padding-right: 12px;
-    margin-left:  2px;
-    margin-right: 2px;
-
-}
-
-#custom-updates {
-    color: #89b4fa;
-    border-radius: 7px 7px 7px 7px;
-    border-left:  0px;
-    border-right: 0px;
-    margin-left:  2px;
-    margin-right: 2px;
-}
-
-#custom-player {
- color: #cba6f7;
- border-radius: 7px 7px 7px 7px;
- padding-left: 4px;
- margin-left:  5px;
- margin-right: 5px;
-}
-
-#memory {
-    color: #89b4fa;
-    border-radius: 7px 7px 7px 7px;
-    margin-left: 5px;
-}
-
-#disk {
-    color: #f9e2af;
-    border-radius: 7px 7px 7px 7px;
-    margin-left: 5px;
+#workspaces button.urgent {
+    color: #eb4d4b;
 }
 
 
-#bluetooth {
-  color: #89b4fa;
-  border-radius: 7px 7px 7px 7px;
-  margin-left: 5px;
-  margin-right: 5px;
-} 
+/* Center Modules */
 
-#pulseaudio {
-  color: #89b4fa;
-  border-radius: 7px 0px 0px 7px;
-  margin-right: 0px;
+.modules-center{
+  background-color: #000917;
+  padding-left:15px;
+  padding-right:15px;
+  border-radius: 12px;
+  border: 2px solid #000326;
 }
 
-#pulseaudio.microphone {
-    color: #cba6f7;
-    border-radius: 0px 7px 7px 0px;
-    margin-left: 0px;
+/* Right modules */
+.modules-right{
+  background-color: #000917;
+  padding-left:10px;
+  padding-right:10px;
+  border-radius: 10px;
+  border: 2px solid #000326;
 }
 
-#battery {
-    color: #a6e3a1;
-    border-radius: 7px 7px 7px 7px;
-    margin-right: 5px;
-    margin-left: 5px;
+#network{
+  padding:10px;
 }
-
-#battery.critical:not(.charging) {
-  background-color:           #F53C3C;
-  color:                      #EEEEEE;
-  animation-name:             blink;
-  animation-duration:         1.0s;
-  animation-timing-function:  linear;
-  animation-iteration-count:  infinite;
-  animation-direction:        alternate;
-}
-
-/* #battery.charging {                     */ 
-/*   background-color:           #a6e3a1;  */ 
-/*   color:                      #F53C3C;  */ 
-/*   animation-name:             blink;    */ 
-/*   animation-duration:         1.0s;     */ 
-/*   animation-timing-function:  linear;   */ 
-/*   animation-iteration-count:  infinite; */ 
-/*   animation-direction:        alternate;*/ 
-/* }                                       */
