@@ -20,7 +20,7 @@ export CDPATH=".:$HOME:$HOME/.config/:$HOME/.local/:$HOME/.local/share/:$HOME/.l
 export LIBVIRT_DEFAULT_URI='qemu:///system'
 export CSCOPE_EDITOR="nvim"
 export DOTS="$HOME/github/dotfiles"
-export RUSTC_WRAPPER=sccache
+export RUSTC_WRAPPER='sccache'
 
 eval $(dircolors ~/.dir_colors)
 
@@ -36,6 +36,7 @@ alias bashrc='nvim ~/.bashrc'
 alias sourcebash='source ~/.bashrc'
 alias top='btop'
 alias code='vscodium'
+alias imageviewer='gwenview'
 # alias swww='awww'
 # alias swww-daemon='awww-daemon'
 
